@@ -17,21 +17,12 @@
     <div class="container-fluid vh-100">
         <div id="app" class="row h-100">
             <div class="col-md-2 " style="display:flex;justify-content:center;align-items:center; ">
-                <nav class="navbar navbar-left bg-primary h-100">
-                    <ul class="nav  flex-column h-75">
-                        <li class="active nav-item"><a class="btn btn-primary btn-block"
-                                style="font-size: larger; border-radius: 0 !important;" href="index.html">SenseApp</a>
-                        </li>
-                        <li class="active nav-item"><a class="btn btn-primary btn-block"
-                                style="font-size: larger; border-radius: 0 !important;" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="btn btn-primary btn-block"
-                                style="font-size: larger; border-radius: 0 !important;" href="archive.html">Archive</a>
-                        </li>
-                        <li class="nav-item"><a class="btn btn-primary btn-block"
-                                style="font-size: larger; border-radius: 0 !important;"
-                                href="averages.html">Averages</a></li>
-                        <li class="nav-item"><a class="btn btn-primary btn-block"
-                                style="font-size: larger; border-radius: 0 !important;" href="#">???</a></li>
+                <nav class="navbar row navbar-left bg-primary h-100">
+                    <ul class="nav col flex-column h-100" style="padding-right: 0%;">
+                        <li class="active nav-item h-25"><a class="btn btn-primary btn-block disabled " style="color: white !important; opacity: 100%; font-size: larger; border-radius: 0 !important;" href="index.html">SenseApp</a></li>
+                        <li class="active nav-item" style="margin-top: -110%;"><a class="btn btn-primary btn-block" style="font-size: larger; border-radius: 0 !important;" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="btn btn-primary btn-block" style="font-size: larger; border-radius: 0 !important;"href="archive.html">Archive</a></li>
+                        <li class="nav-item"><a class="btn btn-primary btn-block" style="font-size: larger; border-radius: 0 !important;" href="averages.html">Averages</a></li>
                     </ul>
                 </nav>
             </div>
@@ -41,25 +32,26 @@
                     <div class="row">
                         <div class="col-md-1"></div>
                         <div class="col-md-8">
-                            <h1 class="text-white" style="margin-bottom: 0%; margin-top: 3%; text-align: center;">Archive</h1> 
+                            <h1 class="text-white" style="margin-bottom: 1%; margin-top: 3%; text-align: center;">Archive</h1> 
                             
-                            <div>
-                            <table class="table table-borderless text-white bg-primary rounded" style="margin-bottom: 0%; margin-top: 1%; overflow-y:scroll;">
+                            <div style="height:900px;overflow:auto;">
+                            <table class="table table-borderless text-white bg-primary rounded" style="margin-bottom: 0%; margin-top: 0%; overflow-y:scroll;">
                                 <tr>
                                     <td style="text-align: center; font-size: 25px; width: 25%;">Date</td>
                                     <td style="text-align: center; font-size: 25px; width: 25%;">CO2</td>
                                     <td style="text-align: center; font-size: 25px; width: 25%;">Temperature</td>
                                     <td style="text-align: center; font-size: 25px; width: 25%;">Humidity</td>
                                 </tr>
-                                <tr v-for="data in dataList" class=" text-primary" style="background-color: rgb(235, 247, 255);">
-                                    <td style="text-align: center; font-size: 25px; width: 25%;">{{ this.data.TimeStamp }}</td>
+                                <tr v-for="data in datalist" class=" text-primary" style="background-color: rgb(235, 247, 255);">
+                                    <td style="text-align: center; font-size: 25px; width: 25%;"> {{datefilter(data.timeStamp)}}</td>
                                     <td style="text-align: center; font-size: 25px; width: 25%;">{{ data.cO2 }}
                                         ppm</td>
                                     <td style="text-align: center; font-size: 25px; width: 25%;">{{ data.temperature }} °C</td>
                                     <td style="text-align: center; font-size: 25px; width: 25%;">{{ data.humidity }} %</td>
                                 </tr>
+                                
                             </table>
-                        </div>
+                            </div>
                         </div>
                         <div class="col-md-3"></div>
                     </div>

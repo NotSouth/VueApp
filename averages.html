@@ -15,13 +15,12 @@
     <div class="container-fluid vh-100">
         <div id="app" class="row h-100" >
             <div class="col-md-2 " style="display:flex;justify-content:center;align-items:center; ">
-                <nav class="navbar navbar-left bg-primary h-100">
-                    <ul class="nav  flex-column h-75">
-                        <li class="active nav-item"><a class="btn btn-primary btn-block" style="font-size: larger; border-radius: 0 !important;" href="index.html">SenseApp</a></li>
-                        <li class="active nav-item"><a class="btn btn-primary btn-block" style="font-size: larger; border-radius: 0 !important;" href="index.html">Home</a></li>
+                <nav class="navbar row navbar-left bg-primary h-100">
+                    <ul class="nav col flex-column h-100" style="padding-right: 0%;">
+                        <li class="active nav-item h-25"><a class="btn btn-primary btn-block disabled " style="color: white !important; opacity: 100%; font-size: larger; border-radius: 0 !important;" href="index.html">SenseApp</a></li>
+                        <li class="active nav-item" style="margin-top: -110%;"><a class="btn btn-primary btn-block" style="font-size: larger; border-radius: 0 !important;" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="btn btn-primary btn-block" style="font-size: larger; border-radius: 0 !important;"href="archive.html">Archive</a></li>
                         <li class="nav-item"><a class="btn btn-primary btn-block" style="font-size: larger; border-radius: 0 !important;" href="averages.html">Averages</a></li>
-                        <li class="nav-item"><a class="btn btn-primary btn-block"style="font-size: larger; border-radius: 0 !important;" href="#">???</a></li>
                     </ul>
                 </nav>
             </div>
@@ -38,11 +37,11 @@
                                     <td style="text-align: center; font-size: 30px; width: 25%;">Temperature</td>
                                     <td style="text-align: center; font-size: 30px; width: 25%;">Humidity</td>
                                 </tr>
-                                <tr class=" text-primary" style="background-color: rgb(235, 247, 255);">
-                                    <td style="text-align: center; font-size: 30px; width: 25%;">Today</td>
-                                    <td style="text-align: center; font-size: 30px; width: 25%;">{{ this.latest.cO2 }} ppm</td>
-                                    <td style="text-align: center; font-size: 30px; width: 25%;">{{ this.latest.temperature }} °C</td>
-                                    <td style="text-align: center; font-size: 30px; width: 25%;">{{ this.latest.humidity }} %</td>
+                                <tr v-for="data in even(datalist)" v-bind:key="data.type" class=" text-primary" style="background-color: rgb(235, 247, 255);">
+                                    <td style="text-align: center; font-size: 30px; width: 25%;">{{ typefilter(data.type)}}</td>
+                                    <td style="text-align: center; font-size: 30px; width: 25%;">{{ data.cO2 }} ppm</td>
+                                    <td style="text-align: center; font-size: 30px; width: 25%;">{{ data.temperature }} °C</td>
+                                    <td style="text-align: center; font-size: 30px; width: 25%;">{{ data.humidity }} %</td>
                                 </tr>
                             </table>
                         </div>
@@ -53,5 +52,6 @@
         </div>
        
     </div>
+    <script src="js/main.js"></script>
     <script src="js/averages.js"></script>
 </body>
