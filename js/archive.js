@@ -57,7 +57,10 @@ Vue.createApp({
             console.log(element)
             
           });
-        }
+        },
+        formatNumber(number){
+          return number.toFixed(2);
+      }
        
        
     }

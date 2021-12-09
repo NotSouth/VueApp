@@ -64,7 +64,11 @@ Vue.createApp({
         return arr.slice().sort(function(a, b) {
           return a.type - b.type;
         });
-      }
+      },
+      
+      formatNumber(number){
+        return number.toFixed(2);
+    }
        
     }
 }).mount("#app")
