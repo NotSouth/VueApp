@@ -12,6 +12,18 @@ Vue.createApp({
                 "temperature": 0,
                 "humidity": 0
                 },
+            weather:{
+                "location": {
+                    "name": ""
+                },
+                "current": {
+                    "temp_c": 0,
+                    "humidity": 0,
+                    "air_quality": {
+                        "co": 0
+                    }
+                 },
+                },
             error: null,
             statuscode: null,
             timer: null
@@ -35,6 +47,7 @@ Vue.createApp({
         autoUpdate() {
             //this.getAll();
             this.getLatest();
+            this.getWeather();
         },
         cleanList() {
             this.dataList = [];
@@ -111,6 +124,26 @@ Vue.createApp({
                     console.log("Error:" + this.error);
                 })
         },
+        getWeather() {
+            //Latest
+            axios.get("https://api.weatherapi.com/v1/current.json?key=2e85e33e07e243508e495548210912&q=Roskilde&aqi=yes")
+                .then(response => {
+                    console.log("in function getWeather");
+                    console.log("status code: " + response.status);
+
+                    //add the returning data from the webservice to the variable posts
+                    this.weather = response.data;
+                    this.status = response.status;
+                })
+                .catch(error = (ex) => {
+                    this.weather = []
+                    this.error = ex.message
+                    console.log("Error:" + this.error);
+                })
+        },
+        formatNumber(number){
+            return number.toFixed(2);
+        }
         // Post(){
         //     axios.post(baseUri,{"id":this.Id,"vendor":this.Vendor,"model":this.Model,"price":this.Price})
         //     .then(response => {
