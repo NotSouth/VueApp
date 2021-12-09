@@ -43,6 +43,11 @@
                                     <td style="text-align: center; font-size: 30px; width: 33%;">{{ this.latest.temperature }} °C</td>
                                     <td style="text-align: center; font-size: 30px; width: 33%;">{{ this.latest.humidity }} %</td>
                                 </tr>
+                                <tr class=" text-primary" style="background-color: rgb(235, 247, 255);">
+                                    <td style="text-align: center; font-size: 30px; width: 33%;">{{ formatNumber(this.weather.current.air_quality.co) }} ppm</td>
+                                    <td style="text-align: center; font-size: 30px; width: 33%;">{{ this.weather.current.temp_c }} °C</td>
+                                    <td style="text-align: center; font-size: 30px; width: 33%;">{{ this.weather.current.humidity }} %</td>
+                                </tr>
                             </table>
                         </div>
                         <div class="col-md-6"></div>
