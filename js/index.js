@@ -7,20 +7,20 @@ Vue.createApp({
         return {
             dataList: [],
             latest: {
-                "id": 0,
-                "cO2": 0,
-                "temperature": 0,
-                "humidity": 0
+                "id": null,
+                "cO2": null,
+                "temperature": null,
+                "humidity": null
                 },
                 weather:{
                     "location": {
                         "name": ""
                     },
                     "current": {
-                        "temp_c": 0,
-                        "humidity": 0,
+                        "temp_c": null,
+                        "humidity": null,
                         "air_quality": {
-                            "co": 0
+                            "co": null
                         }
                      },
                     },
@@ -35,6 +35,7 @@ Vue.createApp({
         console.log("created method called")
         //this.getAll()
         this.getLatest()
+		this.getWeather();
         this.timer = setInterval(this.autoUpdate, 5000);
     },
     beforeDestroy() {
@@ -142,6 +143,9 @@ Vue.createApp({
                 })
         },
         formatNumber(number){
+			if(number == null){
+				return null;
+			}
             return number.toFixed(2);
         }
         // Post(){
